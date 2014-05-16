@@ -1,0 +1,26 @@
+{% extends "common/Layout.html.twig" %}
+{% block metaTitle %}Table de paramétrage{% endblock %}
+{%block title%}<h2>TABLE DE PARAMETRAGE</h2>{%endblock%}
+{% block contentTable %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom de la table</th>
+            <th>Ref table</th>
+            <th>Champs clés</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+{% for param in params %}
+        <tr>
+            <td>{{param.REF_NOMTABLE}}</td>
+            <td>{{param.REF_ORDRE_AFF}}</td>
+            <td>{{param.REF_CHAMPS_CLE}}</td>
+            <td><a href="{{ path('liste', { 'tableId' : param.REF_NOMTABLE})}}" class ="links">
+                        Afficher</a></td>
+        </tr>
+{% endfor %}
+    </tbody>              
+</table>
+{% endblock %}          

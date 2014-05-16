@@ -1,0 +1,54 @@
+{% extends "common/Layout.html.twig" %}
+{% block metaTitle %}Table {{tables}}{% endblock %}
+{%block title%}<h2>TABLE {{tables}}</h2>{%endblock%}
+{% block contentTable %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            {# On boucle pour afficher le nom des colonnes #}
+            {% for head in header %}
+            <th>
+                {{head}}
+            </th>
+            {% endfor %}
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {# On boucle afin d'avoir toutes les informations par ligne de la table. #}
+        {% for key, ligne in data %}
+        <tr>
+            {% for column in ligne %}    
+                <td>{{ column }}</td>
+            {% endfor%}
+            <td>
+                {# 'path' permet de faire passer des informations dans l'URL,
+                    dans ce cas nous allons passer le nom de la table choisie.#}
+                <form action="{{ path('delete', {'tableId' : tables })}}" method="POST">
+                    <input type="hidden" id="_method" name="_method" value="DELETE" />
+                    <input type='hidden' id='pk' name='pk' value='{{attribute(cles, key)}}'/>
+                    <input type="submit" value="Supprimer" class="button-link button-link-table" />
+                </form>
+            </td>
+        </tr> 
+        <tr>
+            <td><a href="{{ path('update', { 'tableId' : tables, 
+                    'valueUpdate' : attribute(cles, key)})}}" class ="links">Modifier</a></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><a href="{{ path('create', { 'tableId' : tables})}}" class ="links">Ajouter</a></td>
+        </tr>
+    </tbody>
+</table>
+</br>
+<a href="{{ path('homepage')}}" class ="links">retour</a>
+{% endblock %}

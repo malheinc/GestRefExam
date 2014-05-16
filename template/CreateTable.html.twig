@@ -1,0 +1,10 @@
+{% extends "common/Layout.html.twig" %}
+{% block metaTitle %}Table selectionnée{% endblock %}
+{%block title%}<h2>TABLE {{tables}}</h2>{%endblock%}
+{% block contentForm %}
+<form action="{{ path('create', {'tableId' : tables}) }}" class ="forms" method="post">
+    {{form_widget(form)}}
+    <input type="submit" value="Ajouter" class="button-link button-link-table" />
+</form>
+<a href="{{ path('liste', { 'tableId' : tables})}}" class ="links">retour</a>
+{%endblock%}

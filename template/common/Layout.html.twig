@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>{% block metaTitle %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        {%block stylesheets %}
+            <link href="{{ appRootPrefix }}/libraries/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+            <link href="{{ appRootPrefix }}css/global.css" rel="stylesheet" />
+            <link rel="icon" href="{{ appRootPrefix }}image/favicon.ico" type="image/x-icon" />
+        {%endblock%}
+    </head>
+    <body>
+        {%block title%}{%endblock%}
+        <div class="logo">
+             <img src="{{ appRootPrefix }}image/logoLP_56.png" />
+        </div>   
+        <div class="flashMessage">
+       {% include '/fragments/flashMessages.html.twig' %}
+        </div>    
+        <div class="containerTab"> 
+       {# Les blocks vont être implémenter par les pages héritant du layout
+          cela va donc permettre de n'avoir qu'une seule pas qui sera dynamique. #}
+       {%block contentTable%}{%endblock%}
+        </div>
+        <div class="forms">
+       {%block contentForm%}{%endblock%}           
+        </div>
+        {% block content %}{%endblock%}
+    </body>
+</html>

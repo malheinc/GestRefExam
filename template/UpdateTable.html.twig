@@ -1,0 +1,15 @@
+{% extends "common/Layout.html.twig" %}
+{% block metaTitle %}Table selectionnée{% endblock %}
+{%block title%}<h2>TABLE {{tables}}</h2>{%endblock%}
+{% block contentForm %}
+{# Sur cette page on va afficher le formulaire créer dans la classe CreateForm.php
+   {{form_widget (form)}} va permettre d'afficher les informations du formulaire. #}
+{# grace a la variable path on passe le nom de la table et la clé de la ligne 
+choisie dans l'url #}
+<form action="{{ path('update', {'tableId' : tables, 'valueUpdate' : donnees}) }}" class="forms" method="post" >
+    {{form_widget(form)}}
+    <input type="hidden" id="_method" name="_method" value="PUT" />
+    <input type="submit" value="Modifier" class="button-link button-link-table"/>  
+</form>
+<a href="{{ path('liste', { 'tableId' : tables})}}" class ="links">retour</a>
+{%endblock%}

@@ -1,0 +1,15 @@
+{% extends "common/layout.html.twig" %}
+
+{% block metaTitle %}Une erreur est survenue{% endblock %}
+
+{% block breadcrumb %}
+    <li>Erreur sur le site</li>
+{% endblock %}
+
+{% block content %}
+        
+        <h3>Oups une erreur est survenue</h3>
+        <pre>{{ message }}</pre>
+        
+  
+{% endblock %}

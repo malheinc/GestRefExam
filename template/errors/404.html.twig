@@ -1,0 +1,20 @@
+{% extends "common/layout.html.twig" %}
+
+{% block metaTitle %}Page introuvable{% endblock %}
+
+{% block breadcrumb %}
+    <li>Page inconnue</li>
+{% endblock %}
+
+{% block content %}
+        
+        <h3>Oups cette page est inconnue</h3>
+
+        Merci de contacter l&apos;administrateur de l&apos;application en indiquant l&apos;erreur ci dessous :
+        
+        <pre class="errors">
+                <code>
+                        {{ message }}
+                </code>
+        </pre>
+{% endblock %}
